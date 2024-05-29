@@ -10,6 +10,14 @@ None.
 
 ## Role Variables
 
+Enable kafka output:
+
+```yaml
+filebeat_output_kafka_enabled: false
+filebeat_output_kafka_hosts: []
+filebeat_output_kafka_topic: "topic"
+```
+
 Available variables are listed below, along with default values (see `defaults/main.yml`):
 
     filebeat_version: 7.x

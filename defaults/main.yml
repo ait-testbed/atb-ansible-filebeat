@@ -11,6 +11,10 @@ filebeat_inputs:
     paths:
       - "/var/log/*.log"
 
+filebeat_output_kafka_enabled: false
+filebeat_output_kafka_hosts: []
+filebeat_output_kafka_topic: "topic"
+
 filebeat_output_elasticsearch_enabled: false
 filebeat_output_elasticsearch_hosts:
   - "localhost:9200"
