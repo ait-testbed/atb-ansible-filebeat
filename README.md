@@ -127,6 +127,34 @@ None.
         - geerlingguy.logstash
         - geerlingguy.filebeat
 
+## Example Playbook for Kafka:
+
+```yaml
+- name: Deploy Filebeat
+  hosts: test
+  remote_user: ubuntu
+  become: true
+  tasks:
+    - name: Add kafka to /etc/hosts
+      ansible.builtin.lineinfile:
+        path: /etc/hosts
+        line: 192.168.100.10  kafka.aecid-testbed.local kafka
+        create: yes
+  roles:
+    - role: filebeat
+      vars:
+        filebeat_template: "filebeatkafka.yml.j2"
+        filebeat_output_kafka_enabled: true
+        filebeat_output_kafka_hosts: ["kafka.aecid-testbed.local:9092"]
+        filebeat_output_kafka_topic: "sometopic"
+        filebeat_inputs:
+          - type: log
+            paths:
+              - "/var/log/*.log"
+              - "/var/log/syslog"
+        filebeat_output_logstash_enabled: false
+```
+
 ## License
 
 MIT / BSD
