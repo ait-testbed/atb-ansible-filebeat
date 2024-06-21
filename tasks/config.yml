@@ -8,6 +8,16 @@
     mode: 0644
   notify: restart filebeat
 
+- name: Enable Filebeat Modules
+  template:
+    src: "{{ item.tpl }}.j2"
+    dest: "/etc/filebeat/modules.d/{{ item.tpl }}"
+    owner: root
+    group: root
+    mode: 0644
+  with_items: "{{ filebeat_template }}"
+  notify: restart filebeat
+
 - name: Ensure Filebeat SSL directories exist.
   file:
     path: "{{ item }}"

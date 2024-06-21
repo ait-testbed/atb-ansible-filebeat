@@ -11,6 +11,13 @@ filebeat_inputs:
     paths:
       - "/var/log/*.log"
 
+filebeat_modules: []
+        # Examples:
+        #  - tpl: "apache.yml"
+        #    paths: ["/var/log/apache2/access.log"]
+        #  - tpl: "suricata.yml"
+        #  - tpl: "auditd.yml"
+
 filebeat_output_kafka_enabled: false
 filebeat_output_kafka_hosts: []
 filebeat_output_kafka_topic: "topic"
