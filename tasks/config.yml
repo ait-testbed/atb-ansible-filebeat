@@ -15,7 +15,7 @@
     owner: root
     group: root
     mode: 0644
-  with_items: "{{ filebeat_template }}"
+  with_items: "{{ filebeat_modules }}"
   notify: restart filebeat
 
 - name: Ensure Filebeat SSL directories exist.
