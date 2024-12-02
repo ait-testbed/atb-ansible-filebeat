@@ -1,4 +1,8 @@
 ---
+- name: Update APT cache.
+  apt:
+    update_cache: yes
+
 - name: Ensure required dependencies are present.
   apt:
     name:
