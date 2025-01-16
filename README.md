@@ -30,6 +30,10 @@ Controls the major version of Filebeat which is installed.
 
 The specific package to be installed. You can specify a version of the package using the correct syntax for your platform and package manager by changing the package name. You can also control the package state (e.g. present, absent, or latest).
 
+    filebeat_service_enabled: true
+
+Whether to enable the Filebeat service at system boot. If set to `true`, Filebeat will automatically start when the system reboots. If set to false, the service will not start automatically on reboot, but it can still be started manually.
+
     filebeat_create_config: true
 
 Whether to create the Filebeat configuration file and handle the copying of SSL key and cert for filebeat. If you prefer to create a configuration file yourself you can set this to `false`.
