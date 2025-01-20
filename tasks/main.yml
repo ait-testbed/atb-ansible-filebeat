@@ -17,4 +17,4 @@
   service:
     name: filebeat
     state: started
-    enabled: true
+    enabled: "{{ filebeat_service_enabled | bool }}"
