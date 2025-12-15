@@ -26,7 +26,7 @@
   loop:
     - "{{ filebeat_ssl_certs_dir }}"
     - "{{ filebeat_ssl_private_dir }}"
-  when: filebeat_ssl_key_file | default(false)
+  when: filebeat_ssl_key_file is defined and filebeat_ssl_key_file | length > 0
 
 - name: Copy SSL key and cert for filebeat.
   copy:
@@ -40,8 +40,8 @@
       file: "{{ filebeat_ssl_certificate_file }}"
   notify: restart filebeat
   when:
-    - filebeat_ssl_copy_files
-    - filebeat_ssl_key_file | default(false)
-    - filebeat_ssl_certificate_file | default(false)
+    - filebeat_ssl_copy_files | bool
+    - filebeat_ssl_key_file is defined and filebeat_ssl_key_file | length > 0
+    - filebeat_ssl_certificate_file is defined and filebeat_ssl_certificate_file | length > 0
 
 #- name: Ensure filebeat can read system's private key
